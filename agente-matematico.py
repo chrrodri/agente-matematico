@@ -32,6 +32,8 @@ def multiply(a: float, b: float) -> float:
 @tool
 def divide(a: float, b: float) -> float:
     """Divide dos números."""
+    if b == 0:
+        raise ValueError("No se puede dividir entre cero.")
     return a / b
 
 tools = [add, multiply, divide]
@@ -46,7 +48,8 @@ agent = create_agent(
     tools=tools,
     system_prompt=(
         "Eres un asistente matemático. "
-        "Usa las herramientas disponibles para sumar, multiplicar y dividir."
+        "Usa siempre las herramientas disponibles para sumar, "
+        "multiplicar y dividir."
     ),
 )
 
